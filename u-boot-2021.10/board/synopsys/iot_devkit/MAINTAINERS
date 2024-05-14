@@ -1,5 +1,0 @@
-IOT DEVKIT BOARD
-M:	Alexey Brodkin <abrodkin@synopsys.com>
-S:	Maintained
-F:	board/synopsys/iot_devkit/
-F:	configs/iot_devkit_defconfig
