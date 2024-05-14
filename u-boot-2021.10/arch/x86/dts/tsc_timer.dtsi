@@ -1,7 +1,0 @@
-/ {
-	tsc-timer {
-		compatible = "x86,tsc-timer";
-		clock-frequency = <CONFIG_X86_TSC_TIMER_FREQ>;
-		u-boot,dm-pre-reloc;
-	};
-};
