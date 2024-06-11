@@ -1,1 +1,1 @@
-usb-rndis.sh
+usb-ncm.sh
