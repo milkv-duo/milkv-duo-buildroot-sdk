@@ -337,7 +337,7 @@ To rollback this change in `/etc/wsl.conf` file set `appendWindowsPath` as true.
 ### The method to log in to the Duo terminal
 
 - Using a serial cable.
-- Using a USB network (RNDIS).
+- Using a USB network (CDC-NCM).
 - Using the Ethernet interface (requires the IO-Board).
 
 The username and password for logging into the Duo terminal are as follows:
@@ -365,7 +365,7 @@ mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
 
 ### Using the IO-Board baseboard
 
-Note that when using the IO-Board, the USB network (RNDIS) is not available, Please use the Ethernet interface on the IO-Board.
+Note that when using the IO-Board, the USB network (CDC-NCM) is not available, Please use the Ethernet interface on the IO-Board.
 
 If you need to assign a fixed MAC address to the Ethernet port of the IO-Board, please execute the following command(**Replace the MAC address in the command with the MAC address you want to set, and please note that MAC addresses of different devices within the same network segment must not be duplicated**):
 
@@ -405,10 +405,10 @@ The command to unmount a USB flash drive:
 umount /mnt/udisk
 ```
 
-To restore the functionality of the USB network (RNDIS) when not using the IO-Board, you can follow these steps:
+To restore the functionality of the USB network (CDC-NCM) when not using the IO-Board, you can follow these steps:
 
 ```bash
-ln -sf /mnt/system/usb-rndis.sh /mnt/system/usb.sh
+ln -sf /mnt/system/usb-ncm.sh /mnt/system/usb.sh
 sync
 ```
 

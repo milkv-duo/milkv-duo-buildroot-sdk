@@ -375,7 +375,7 @@ appendWindowsPath = false
 ### 登陆到 Duo 终端的方法
 
 - 通过串口线
-- 通过 USB 网卡 (RNDIS) 方式
+- 通过 USB 网卡 (CDC-NCM) 方式
 - 通过以太网接口(需要扩展板支持)
 
 登陆 Duo 终端的用户名和密码分别为：
@@ -401,9 +401,9 @@ mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
 
 ### 使用 IO Board 底板
 
-注意，使用 IO Board 底板时，USB 网卡 (RNDIS) 不可用，如需使用网络功能，请使用底板上的以太网接口。
+注意，使用 IO Board 底板时，USB 网卡 (CDC-NCM) 不可用，如需使用网络功能，请使用底板上的以太网接口。
 
-使用底板上的 4 个 USB 口，需要修改一下配置，将默认固件中的 `usb-rndis` 功能修改为 `usb-host`：
+使用底板上的 4 个 USB 口，需要修改一下配置，将默认固件中的 `usb-ncm` 功能修改为 `usb-host`：
 
 ```bash
 ln -sf /mnt/system/usb-host.sh /mnt/system/usb.sh
@@ -432,10 +432,10 @@ ls /mnt/udisk
 umount /mnt/udisk
 ```
 
-不使用底板时，恢复 USB 网卡 (RNDIS) 的方法：
+不使用底板时，恢复 USB 网卡 (CDC-NCM) 的方法：
 
 ```bash
-ln -sf /mnt/system/usb-rndis.sh /mnt/system/usb.sh
+ln -sf /mnt/system/usb-ncm.sh /mnt/system/usb.sh
 sync
 ```
 

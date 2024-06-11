@@ -350,7 +350,7 @@ appendWindowsPath = false
 ### Duoのターミナルに入る方法
 
 - シリアルケーブルを使う
-- USBネットワークを使う(RNDIS)
+- USBネットワークを使う(CDC-NCM)
 - イーサネットインターフェースを使う(アドオンボードが必要)
 
 Duoのターミナルに入る際に必要なユーザー名とパスワードは以下の通りです。
@@ -378,7 +378,7 @@ DuoのLEDをまた点滅させたい場合、スクリプトのファイル名�
 
 ### IO-Boardを使う
 
-IO-Boardを使用する場合、USBネットワーク(RNDIS)は使用できないので、IO-Boardのイーサネットインターフェースを使用してください。
+IO-Boardを使用する場合、USBネットワーク(CDC-NCM)は使用できないので、IO-Boardのイーサネットインターフェースを使用してください。
 IO-BoardのEthernetポートに固定MACアドレスを割り当てる必要がある場合は、以下のコマンドを実行してください(**コマンド中のMACアドレスは設定したいMACアドレスに置き換えてください。また、同一ネットワークセグメント内の異なるデバイスのMACアドレスは重複してはいけません**)。
 
    ```bash
@@ -415,10 +415,10 @@ USBフラッシュドライブをアンマウントするコマンド。
    umount /mnt/udisk
    ```
 
-USBネットワーク(RNDIS)の機能をIO-Board不使用時に使う。
+USBネットワーク(CDC-NCM)の機能をIO-Board不使用時に使う。
 
    ```bash
-   ln -sf /mnt/system/usb-rndis.sh /mnt/system/usb.sh
+   ln -sf /mnt/system/usb-ncm.sh /mnt/system/usb.sh
    sync
    ```
    - それからボードを再起動してください。
