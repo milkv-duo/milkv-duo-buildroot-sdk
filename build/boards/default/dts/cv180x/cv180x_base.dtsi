@@ -617,6 +617,7 @@
 		reg = <0x0 0x0300A000 0x0 0x100>;
 		clocks = <&i2s_mclk 0>;
 		clock-names = "i2sclk";
+		clk_source = <0x04130000>; /* MCLK source is I2S3 */
 	};
 
 	pdm: pdm@0x041D0C00 {
