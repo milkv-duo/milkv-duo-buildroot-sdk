@@ -10,6 +10,8 @@ UTIL_LINUX_LIBS_VERSION = $(UTIL_LINUX_VERSION)
 UTIL_LINUX_LIBS_SOURCE = $(UTIL_LINUX_SOURCE)
 UTIL_LINUX_LIBS_SITE = $(UTIL_LINUX_SITE)
 UTIL_LINUX_LIBS_DL_SUBDIR = $(UTIL_LINUX_DL_SUBDIR)
+UTIL_LINUX_LIBS_CPE_ID_VENDOR = $(UTIL_LINUX_CPE_ID_VENDOR)
+UTIL_LINUX_LIBS_CPE_ID_PRODUCT = $(UTIL_LINUX_CPE_ID_PRODUCT)
 
 # README.licensing claims that some files are GPL-2.0 only, but this is not
 # true. Some files are GPL-3.0+ but only in tests and optionally in hwclock
@@ -49,6 +51,9 @@ UTIL_LINUX_LIBS_CONF_OPTS += --disable-widechar
 
 # No libs use ncurses
 UTIL_LINUX_LIBS_CONF_OPTS += --without-ncursesw --without-ncurses
+
+# workaround for static_assert on uclibc-ng < 1.0.42
+UTIL_LINUX_LIBS_CONF_ENV += CFLAGS="$(TARGET_CFLAGS) -Dstatic_assert=_Static_assert"
 
 # Unfortunately, the util-linux does LIBS="" at the end of its
 # configure script. So we have to pass the proper LIBS value when
