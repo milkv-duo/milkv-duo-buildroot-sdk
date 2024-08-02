@@ -69,7 +69,7 @@ You will see tips on how to use the compiled script:
 # ./build.sh
 Usage:
 ./build.sh              - Show this menu
-./build.sh lunch        - Select a board to build
+./build.sh launch       - Select a board to build
 ./build.sh [board]      - Build [board] directly, supported boards asfollows:
 milkv-duo
 milkv-duo256m
@@ -78,9 +78,9 @@ Listed at the bottom is the list of currently supported target versions.
 
 As shown in the prompt, there are two ways to compile the target version.
 
-The first method is to execute `./build.sh lunch` to bring up the interactive menu, select the version number to be compiled, and press Enter:
+The first method is to execute `./build.sh launch` to bring up the interactive menu, select the version number to be compiled, and press Enter:
 ```bash
-# ./build.sh lunch
+# ./build.sh launch
 Select a target to build:
 1. milkv-duo
 2. milkv-duo256m
@@ -180,7 +180,7 @@ CONTAINER ID   IMAGE                        COMMAND       CREATED       STATUS  
 docker exec -it duodocker /bin/bash -c "cd /home/work && cat /etc/issue && ./build.sh [board]"
 ```
 
-Note that the `./build.sh [board]` at the end of the command is the same as the previous usage in the one-click compilation instructions in Ubuntu 22.04. Use `./build.sh` can see how to use the command, use `./ build.sh lunch` can bring up the interactive selection menu, use `./build.sh [board]` to directly compile the target version, `[board]` can be replaced with:
+Note that the `./build.sh [board]` at the end of the command is the same as the previous usage in the one-click compilation instructions in Ubuntu 22.04. Use `./build.sh` can see how to use the command, use `./ build.sh launch` can bring up the interactive selection menu, use `./build.sh [board]` to directly compile the target version, `[board]` can be replaced with:
 ```
 milkv-duo
 milkv-duo256m

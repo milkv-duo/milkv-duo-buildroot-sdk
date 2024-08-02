@@ -66,7 +66,7 @@ cd duo-buildroot-sdk/
 ```bash
 # ./build.sh
 ./build.sh              - Show this menu
-./build.sh lunch        - Select a board to build
+./build.sh launch       - Select a board to build
 ./build.sh [board]      - Build [board] directly, supported boards as follows:
 milkv-duo
 milkv-duo-spinand
@@ -82,9 +82,9 @@ milkv-duos-sd
 
 如提示中所示，有两种方法来编译目录版本。
 
-第一种方法是执行 `./build.sh lunch` 调出交互菜单，选择要编译的版本序号，回车：
+第一种方法是执行 `./build.sh launch` 调出交互菜单，选择要编译的版本序号，回车：
 ```bash
-# ./build.sh lunch
+# ./build.sh launch
 Select a target to build:
 1. milkv-duo
 2. milkv-duo-spinand
@@ -199,7 +199,7 @@ CONTAINER ID   IMAGE                        COMMAND       CREATED       STATUS  
 docker exec -it duodocker /bin/bash -c "cd /home/work && cat /etc/issue && ./build.sh [board]"
 ```
 
-注意命令最后的 `./build.sh [board]` 和前面在 Ubuntu 22.04 中一键编译说明中的用法是一样的，直接 `./build.sh` 可以查看命令的使用方法，用 `./build.sh lunch` 可以调出交互选择菜单，用 `./build.sh [board]` 可以直接编译目标版本，`[board]` 可以替换为:
+注意命令最后的 `./build.sh [board]` 和前面在 Ubuntu 22.04 中一键编译说明中的用法是一样的，直接 `./build.sh` 可以查看命令的使用方法，用 `./build.sh launch` 可以调出交互选择菜单，用 `./build.sh [board]` 可以直接编译目标版本，`[board]` 可以替换为:
 ```
 milkv-duo
 milkv-duo-spinand

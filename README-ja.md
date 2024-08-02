@@ -83,7 +83,7 @@ cd duo-buildroot-sdk/
 # ./build.sh
 Usage:
 ./build.sh              - Show this menu
-./build.sh lunch        - Select a board to build
+./build.sh launch       - Select a board to build
 ./build.sh [board]      - Build [board] directly, supported boards asfollows:
 milkv-duo
 milkv-duo256m
@@ -92,9 +92,9 @@ milkv-duo256m
 
 プロンプトにあるように、ターゲット向けにコンパイルするには2つ方法があります。
 
-1つ目の方法は、`build.sh lunch`でインタラクティブメニューを立ち上げて、ターゲットのバージョンの番号を選択し、Enterを押すだけです。
+1つ目の方法は、`build.sh launch`でインタラクティブメニューを立ち上げて、ターゲットのバージョンの番号を選択し、Enterを押すだけです。
 ```bash
-# ./build.sh lunch
+# ./build.sh launch
 Select a target to build:
 1. milkv-duo
 2. milkv-duo256m
@@ -194,7 +194,7 @@ CONTAINER ID   IMAGE                        COMMAND       CREATED       STATUS  
 ```bash
 docker exec -it duodocker /bin/bash -c "cd /home/work && cat /etc/issue && ./build.sh [board]"
 ```
-`./build.sh [board]`のコマンドの終端についてはUbuntu 20.04での自動コンパイルスクリプトでの使い方と同じです。`./build.sh`で使い方が表示され、`./build.sh lunch`で選択画面を表示できます。`./build.sh [board]`で直接ターゲット向けにコンパイルできます。`[board]`の部分は以下に置き換えられます。ターゲットに合わせてください。
+`./build.sh [board]`のコマンドの終端についてはUbuntu 20.04での自動コンパイルスクリプトでの使い方と同じです。`./build.sh`で使い方が表示され、`./build.sh launch`で選択画面を表示できます。`./build.sh [board]`で直接ターゲット向けにコンパイルできます。`[board]`の部分は以下に置き換えられます。ターゲットに合わせてください。
 
 ```
 milkv-duo

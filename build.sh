@@ -220,7 +220,7 @@ function build_usage()
 {
   echo "Usage:"
   echo "${BASH_SOURCE[0]}              - Show this menu"
-  echo "${BASH_SOURCE[0]} lunch        - Select a board to build"
+  echo "${BASH_SOURCE[0]} launch       - Select a board to build"
   echo "${BASH_SOURCE[0]} [board]      - Build [board] directly, supported boards as follows:"
 
   for board in "${MILKV_BOARD_ARRAY[@]}"; do
@@ -229,7 +229,7 @@ function build_usage()
 }
 
 if [ $# -ge 1 ]; then
-  if [ "$1" = "lunch" ]; then
+  if [ "$1" = "launch" ]; then
     choose_board || exit 0
   else
     if [[ ${MILKV_BOARD_ARRAY[@]} =~ (^|[[:space:]])"${1}"($|[[:space:]]) ]]; then
