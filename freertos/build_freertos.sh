@@ -78,6 +78,7 @@ pushd $BUILD_PATH/task
 cmake -G Ninja -DCHIP=$RUN_CHIP  \
     -DRUN_TYPE=$RUN_TYPE \
     -DTOP_DIR=$TOP_DIR \
+    -DBOARD=$MV_BOARD \
     -DCMAKE_TOOLCHAIN_FILE=$TOOLCHAIN_FILE_PATH \
     $TOP_DIR/task
 cmake --build . --target install -- -v

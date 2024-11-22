@@ -32,7 +32,7 @@ ZIP_TARGET_CFLAGS = \
 define ZIP_BUILD_CMDS
 	$(TARGET_MAKE_ENV) $(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D) \
 		CFLAGS="$(ZIP_TARGET_CFLAGS) $(ZIP_CFLAGS)" \
-		AS="$(TARGET_CC) -c" \
+		CC="$(TARGET_CC) $(TARGET_LDFLAGS)" AS="$(TARGET_CC) -c" \
 		-f unix/Makefile generic
 endef
 

@@ -48,7 +48,7 @@ The following describes the compilation methods in the two environments.
 Install the packages that compile dependencies:
 
 ```bash
-sudo apt install -y pkg-config build-essential ninja-build automake autoconf libtool wget curl git gcc libssl-dev bc slib squashfs-tools android-sdk-libsparse-utils jq python3-distutils scons parallel tree python3-dev python3-pip device-tree-compiler ssh cpio fakeroot libncurses5 flex bison libncurses5-dev genext2fs rsync unzip dosfstools mtools tcl openssh-client cmake expect
+sudo apt install -y pkg-config build-essential ninja-build automake autoconf libtool wget curl git gcc libssl-dev bc slib squashfs-tools android-sdk-libsparse-utils jq python3-distutils scons parallel tree python3-dev python3-pip device-tree-compiler ssh cpio fakeroot libncurses5 flex bison libncurses5-dev genext2fs rsync unzip dosfstools mtools tcl openssh-client cmake expect libconfuse2
 ```
 
 ### Get SDK Source Code
@@ -70,9 +70,15 @@ You will see tips on how to use the compiled script:
 Usage:
 ./build.sh              - Show this menu
 ./build.sh lunch        - Select a board to build
-./build.sh [board]      - Build [board] directly, supported boards asfollows:
-milkv-duo
-milkv-duo256m
+./build.sh [board]      - Build [board] directly, supported boards as follows:
+milkv-duo-sd
+milkv-duo-spinand
+milkv-duo-spinor
+milkv-duo256m-sd
+milkv-duo256m-spinand
+milkv-duo256m-spinor
+milkv-duos-emmc
+milkv-duos-sd
 ```
 Listed at the bottom is the list of currently supported target versions.
 
@@ -82,8 +88,14 @@ The first method is to execute `./build.sh lunch` to bring up the interactive me
 ```bash
 # ./build.sh lunch
 Select a target to build:
-1. milkv-duo
-2. milkv-duo256m
+1. milkv-duo-sd
+2. milkv-duo-spinand
+3. milkv-duo-spinor
+4. milkv-duo256m-sd
+5. milkv-duo256m-spinand
+6. milkv-duo256m-spinor
+7. milkv-duos-emmc
+8. milkv-duos-sd
 Which would you like:
 ```
 
@@ -106,8 +118,15 @@ tar -xf host-tools.tar.gz -C /your/sdk/path/
 
 Then enter the following commands in sequence to complete the step-by-step compilation. Replace `[board]` and `[config]` in the command with the version that needs to be compiled. The currently supported `board` and corresponding `config` are as follows:
 ```
-milkv-duo               cv1800b_milkv_duo_sd
-milkv-duo256m           cv1812cp_milkv_duo256m_sd
+
+milkv-duo256m-sd        cv1812cp_milkv_duo256m_sd
+milkv-duo256m-spinand   cv1812cp_milkv_duo256m_spinand
+milkv-duo256m-spinor    cv1812cp_milkv_duo256m_spinor
+milkv-duo-sd            cv1800b_milkv_duo_sd
+milkv-duos-emmc         cv1813h_milkv_duos_emmc
+milkv-duo-spinand       cv1800b_milkv_duo_spinand
+milkv-duo-spinor        milkv-duo-spinor
+milkv-duos-sd           cv1813h_milkv_duos_sd
 ```
 
 ```bash
@@ -135,6 +154,7 @@ Generated firmware location:
 ```
 Duo:      install/soc_cv1800b_milkv_duo_sd/[board].img
 Duo256M:  install/soc_cv1812cp_milkv_duo256m_sd/[board].img
+Duos:     install/soc_cv1813cp_milkv_duos_sd/[board].img
 ```
 
 ## 2. Compiled using Docker
@@ -182,8 +202,14 @@ docker exec -it duodocker /bin/bash -c "cd /home/work && cat /etc/issue && ./bui
 
 Note that the `./build.sh [board]` at the end of the command is the same as the previous usage in the one-click compilation instructions in Ubuntu 22.04. Use `./build.sh` can see how to use the command, use `./ build.sh lunch` can bring up the interactive selection menu, use `./build.sh [board]` to directly compile the target version, `[board]` can be replaced with:
 ```
-milkv-duo
-milkv-duo256m
+milkv-duo-sd
+milkv-duo-spinand
+milkv-duo-spinor
+milkv-duo256m-sd
+milkv-duo256m-spinand
+milkv-duo256m-spinor
+milkv-duos-emmc
+milkv-duos-sd
 ```
 
 Description of some parameters in the command:
@@ -222,8 +248,14 @@ root@8edea33c2239:/# cd /home/work/
 
 Then enter the following commands in sequence to complete the step-by-step compilation. Replace `[board]` and `[config]` in the command with the version that needs to be compiled. The currently supported `board` and corresponding `config` are as follows:
 ```
-milkv-duo               cv1800b_milkv_duo_sd
-milkv-duo256m           cv1812cp_milkv_duo256m_sd
+milkv-duo256m-sd        cv1812cp_milkv_duo256m_sd
+milkv-duo256m-spinand   cv1812cp_milkv_duo256m_spinand
+milkv-duo256m-spinor    cv1812cp_milkv_duo256m_spinor
+milkv-duo-sd            cv1800b_milkv_duo_sd
+milkv-duos-emmc         cv1813h_milkv_duos_emmc
+milkv-duo-spinand       cv1800b_milkv_duo_spinand
+milkv-duo-spinor        milkv-duo-spinor
+milkv-duos-sd           cv1813h_milkv_duos_sd
 ```
 
 ```bash
@@ -251,6 +283,7 @@ Generated firmware location:
 ```
 Duo:      install/soc_cv1800b_milkv_duo_sd/[board].img
 Duo256M:  install/soc_cv1812cp_milkv_duo256m_sd/[board].img
+Duos:     install/soc_cv1813cp_milkv_duos_sd/[board].img
 ```
 
 Generated firmware location: `install/soc_cv1800b_milkv_duo_sd/milkv-duo.img`.
@@ -324,7 +357,7 @@ To rollback this change in `/etc/wsl.conf` file set `appendWindowsPath` as true.
 - To write the generated image to a microSD card on Windows, you can use tools like `balenaEtcher`, `Rufus`, or `Win32 Disk Imager`.
 - To write the generated image to a microSD card on Linux, use the `dd` command. **Please make sure to carefully confirm that the `of` device `/dev/sdX` corresponds to the microSD card you want to burn**:
   ```bash
-  sudo dd if=milkv-duo-*-*.img of=/dev/sdX
+  sudo dd if=milkv-duo-*-*.img of=/dev/sdX conv=fsync status=progress
   ```
 
 ## Power ON
