@@ -15,11 +15,13 @@ if test $? != 0 ; then
 fi
 
 # Sanity check for CWD in LD_LIBRARY_PATH
+unset LD_LIBRARY_PATH # dirty hack?
 case ":${LD_LIBRARY_PATH:-unset}:" in
 (*::*|*:.:*)
 	echo
 	echo "You seem to have the current working directory in your"
 	echo "LD_LIBRARY_PATH environment variable. This doesn't work."
+	echo $LD_LIBRARY_PATH
 	exit 1
 	;;
 esac

@@ -12,7 +12,8 @@ main() {
 
     start=${SECONDS}
 
-    ( exec 2>&1; unbuffer make "${@}"; ) \
+    #( exec 2>&1; unbuffer make "${@}"; ) \
+    ( exec 2>&1; stdbuf -oL make "${@}"; )
     > >( while read line; do
              printf "%(%Y-%m-%dT%H:%M:%S)T %s\n" -1 "${line}"
          done \
