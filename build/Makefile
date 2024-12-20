@@ -605,6 +605,7 @@ else ifeq ($(STORAGE_TYPE), spinor)
 	${Q}cp $(TARGET_OUTPUT_DIR)/images/rootfs.squashfs $(OUTPUT_DIR)/rawimages/rootfs.$(STORAGE_TYPE)
 	$(call raw2cimg ,rootfs.$(STORAGE_TYPE))
 else
+	${Q}cp $(TARGET_OUTPUT_DIR)/images/rootfs.squashfs $(OUTPUT_DIR)/rootfs.squashfs
 	${Q}cp $(TARGET_OUTPUT_DIR)/images/rootfs.ext4 $(OUTPUT_DIR)/rawimages/rootfs_ext4.$(STORAGE_TYPE)
 	$(call raw2cimg ,rootfs_ext4.$(STORAGE_TYPE))
 endif	

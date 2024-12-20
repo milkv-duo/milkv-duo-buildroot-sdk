@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# Mounting OverlayFS...
+#
+
+init_sys()
+{
+    mount -n -t ext4 /dev/mmcblk0p3 -o rw,noatime /overlay
+    ret=$?
+    echo "ret:$ret"
+    if [ $ret -ne 0 ];then
+        echo "Start format /dev/mmcblk0p3"
+        mkfs.ext4 /dev/mmcblk0p3
+        mount -n -t ext4 /dev/mmcblk0p3 -o rw,noatime /overlay
+        echo "Format & mount /dev/mmcblk0p3 success"
+    fi
+
+        mkdir -p /overlay/upper /overlay/work
+        mount -n -t overlay overlayfs:/overlay -o rw,noatime,lowerdir=/,upperdir=/overlay/upper,workdir=/overlay/work /mnt
+
+        mount -n /proc -o noatime,--move /mnt/proc
+        pivot_root /mnt /mnt/rom
+        mount -n /rom/dev -o noatime,--move /dev
+        mount -n /rom/dev/shm -o noatime,--move /dev/shm
+        mount -n /rom/tmp -o noatime,--move /tmp
+        mount -n /rom/sys -o noatime,--move /sys
+        mount -n /rom/run -o noatime,--move /run 
+        mount -n /rom/media -o noatime,--move /media
+}
+
+init_sys
+
+
+
+
